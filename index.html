@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricerca Full-Text con jQuery</title>
+    <!-- Includi jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Ricerca Full-Text</h1>
+    <input type="text" id="searchInput" placeholder="Cerca...">
+    <ul id="searchResults"></ul>
+
+    <script>
+        // Codice jQuery per gestire la ricerca full-text
+        $(document).ready(function () {
+            // Seleziona l'input di ricerca e l'area dei risultati
+            var $searchInput = $('#searchInput');
+            var $searchResults = $('#searchResults');
+
+            // Aggiungi un ascoltatore all'evento di input sull'input di ricerca
+            $searchInput.on('input', function () {
+                var searchTerm = $(this).val().toLowerCase(); // Converti in minuscolo per ricerca case-insensitive
+                
+                // Svuota l'area dei risultati
+                $searchResults.empty();
+
+                // Esegui la ricerca nei tuoi contenuti
+                // Qui dovresti avere un array o una lista di contenuti da cui cercare
+                var contentList = [
+                    "Dragon Ball",
+                    "Naruto",
+                    "Death Note",
+                    "My Hero Academia",
+                    "G.T.O.",
+                    "One Punch Man",
+                    "L'attacco dei giganti"
+                    // ... altri contenuti ...
+                ];
+
+                // Itera attraverso i contenuti e mostra quelli che corrispondono alla ricerca
+                contentList.forEach(function (content) {
+                    if (content.toLowerCase().includes(searchTerm)) {
+                        $searchResults.append('<li>' + content + '</li>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
